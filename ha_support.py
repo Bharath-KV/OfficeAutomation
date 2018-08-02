@@ -6,10 +6,12 @@
 #    Jul 30, 2018 03:58:23 PM
 #    Jul 30, 2018 04:27:56 PM
 #    Jul 30, 2018 09:51:25 PM
+# Created by Bharath Kumar V 
 #!/usr/bin/python
 
 import sys
 import time
+import serial
 
 try:
     from Tkinter import *
@@ -33,27 +35,29 @@ def load_LON(p1):
     p1.image = w._ledOn
 
 def load_LOFF(p1):
-    w._ledOff = PhotoImage(file="icons/light_off.png")
+    w._ledOff = PhotoImage(file="light_off.png")
     p1.configure(image=w._ledOff)
     p1.image = w._ledOff
     
 def load_RON(p1):
-    w._fanOn = PhotoImage(file="icons/rfan.png")
+    w._fanOn = PhotoImage(file="rfan.png")
     p1.configure(image=w._fanOn)
     p1.image = w._fanOn
 
 def load_ROFF(p1):
-    w._fanOff = PhotoImage(file="icons/sfan.png")
+    w._fanOff = PhotoImage(file="sfan.png")
     p1.configure(image=w._fanOff)
     p1.image = w._fanOff
 
 def room1Led1Control(p1):
     if (p1 == "OFF"):
         print("R1L01: "+p1)
+        w.ser.write("L8.1")
         load_LON(w.R1L01)
         w.R1L01['text'] = "ON"
     else:
         print("R1L01: "+p1)
+        w.ser.write("L8.0")
         load_LOFF(w.R1L01)
         w.R1L01['text'] = "OFF"
     sys.stdout.flush()
@@ -61,10 +65,12 @@ def room1Led1Control(p1):
 def room1Led2Control(p1):
    if (p1 == "OFF"):
         print("R1L02: "+p1)
+        w.ser.write("L9.1")
         load_LON(w.R1L02)
         w.R1L02['text'] = "ON"
    else:
         print("R1L02: "+p1)
+        w.ser.write("L9.0")
         load_LOFF(w.R1L02)
         w.R1L02['text'] = "OFF"
    sys.stdout.flush()
@@ -73,10 +79,12 @@ def room1Led2Control(p1):
 def room1Led3Control(p1):
     if (p1 == "OFF"):
         print("R1L03: "+p1)
+        w.ser.write("L10.1")
         load_LON(w.R1L03)
         w.R1L03['text'] = "ON"
     else:
         print("R1L03: "+p1)
+        w.ser.write("L10.0")
         load_LOFF(w.R1L03)
         w.R1L03['text'] = "OFF"
     sys.stdout.flush()
@@ -84,10 +92,12 @@ def room1Led3Control(p1):
 def room1Led4Control(p1):
     if (p1 == "OFF"):
         print("R1L4: "+p1)
+        w.ser.write("L11.1")
         load_LON(w.R1L4)
         w.R1L4['text'] = "ON"
     else:
         print("R1L4: "+p1)
+        w.ser.write("L11.0")
         load_LOFF(w.R1L4)
         w.R1L4['text'] = "OFF"
     sys.stdout.flush()
@@ -131,10 +141,12 @@ def room1Fan2SControl(p1):
 def room2Led1Control(p1):
     if (p1 == "OFF"):
         print("R2L01: "+p1)
+        w.ser.write("L12.1")
         load_LON(w.R2L01)
         w.R2L01['text'] = "ON"
     else:
         print("R2L01: "+p1)
+        w.ser.write("L12.0")
         load_LOFF(w.R2L01)
         w.R2L01['text'] = "OFF"
     sys.stdout.flush()
@@ -142,10 +154,12 @@ def room2Led1Control(p1):
 def room2Led2Control(p1):
     if (p1 == "OFF"):
         print("R2L02: "+p1)
+        w.ser.write("L13.1")
         load_LON(w.R2L02)
         w.R2L02['text'] = "ON"
     else:
         print("R2L02: "+p1)
+        w.ser.write("L13.0")
         load_LOFF(w.R2L02)
         w.R2L02['text'] = "OFF"
     sys.stdout.flush()
@@ -153,10 +167,12 @@ def room2Led2Control(p1):
 def room2Led3Control(p1):
     if (p1 == "OFF"):
         print("R2L03: "+p1)
+        w.ser.write("L14.1")
         load_LON(w.R2L03)
         w.R2L03['text'] = "ON"
     else:
         print("R2L03: "+p1)
+        w.ser.write("L14.0")
         load_LOFF(w.R2L03)
         w.R2L03['text'] = "OFF"
     sys.stdout.flush()
@@ -164,10 +180,12 @@ def room2Led3Control(p1):
 def room2Led4Control(p1):
     if (p1 == "OFF"):
         print("R2L04: "+p1)
+        w.ser.write("L15.1")
         load_LON(w.R2L04)
         w.R2L04['text'] = "ON"
     else:
         print("R2L04: "+p1)
+        w.ser.write("L15.0")
         load_LOFF(w.R2L04)
         w.R2L04['text'] = "OFF"
     sys.stdout.flush()
@@ -211,10 +229,12 @@ def room2Fan2SControl(p1):
 def room3Led1Control(p1):
     if (p1 == "OFF"):
         print("R3L01: "+p1)
+        w.ser.write("L16.1")
         load_LON(w.R3L01)
         w.R3L01['text'] = "ON"
     else:
         print("R3L01: "+p1)
+        w.ser.write("L16.0")
         load_LOFF(w.R3L01)
         w.R3L01['text'] = "OFF"
     sys.stdout.flush()
@@ -222,10 +242,12 @@ def room3Led1Control(p1):
 def room3Led2Control(p1):
     if (p1 == "OFF"):
         print("R3L02: "+p1)
+        w.ser.write("L17.1")
         load_LON(w.R3L02)
         w.R3L02['text'] = "ON"
     else:
         print("R3L02: "+p1)
+        w.ser.write("L17.0")
         load_LOFF(w.R3L02)
         w.R3L02['text'] = "OFF"
     sys.stdout.flush()
@@ -233,10 +255,12 @@ def room3Led2Control(p1):
 def room3Led3Control(p1):
     if (p1 == "OFF"):
         print("R3L03: "+p1)
+        w.ser.write("L18.1")
         load_LON(w.R3L03)
         w.R3L03['text'] = "ON"
     else:
         print("R3L03: "+p1)
+        w.ser.write("L18.0")
         load_LOFF(w.R3L03)
         w.R3L03['text'] = "OFF"
     sys.stdout.flush()
@@ -244,10 +268,12 @@ def room3Led3Control(p1):
 def room3Led4Control(p1):
     if (p1 == "OFF"):
         print("R3L04: "+p1)
+        w.ser.write("L19.1")
         load_LON(w.R3L04)
         w.R3L04['text'] = "ON"
     else:
         print("R3L04: "+p1)
+        w.ser.write("L19.0")
         load_LOFF(w.R3L04)
         w.R3L04['text'] = "OFF"
     sys.stdout.flush()
@@ -295,10 +321,12 @@ def room3Fan2SControl(p1):
 def outLed1Control(p1):
     if (p1 == "OFF"):
         print("OutL01: "+p1)
+        w.ser.write("L20.1")
         load_LON(w.OutL01)
         w.OutL01['text'] = "ON"
     else:
         print("OutL01: "+p1)
+        w.ser.write("L20.0")
         load_LOFF(w.OutL01)
         w.OutL01['text'] = "OFF"
     sys.stdout.flush()
@@ -306,10 +334,12 @@ def outLed1Control(p1):
 def outLed2Control(p1):
     if (p1 == "OFF"):
         print("OutL02: "+p1)
+        w.ser.write("L21.1")
         load_LON(w.OutL02)
         w.OutL02['text'] = "ON"
     else:
         print("OutL02: "+p1)
+        w.ser.write("L21.0")
         load_LOFF(w.OutL02)
         w.OutL02['text'] = "OFF"
     sys.stdout.flush()
@@ -317,10 +347,12 @@ def outLed2Control(p1):
 def outLed3Control(p1):
     if (p1 == "OFF"):
         print("OutL03: "+p1)
+        w.ser.write("L22.1")
         load_LON(w.OutL03)
         w.OutL03['text'] = "ON"
     else:
         print("OutL03: "+p1)
+        w.ser.write("L22.0")
         load_LOFF(w.OutL03)
         w.OutL03['text'] = "OFF"
     sys.stdout.flush()
@@ -328,10 +360,12 @@ def outLed3Control(p1):
 def outLed4Control(p1):
     if (p1 == "OFF"):
         print("OutL04: "+p1)
+        w.ser.write("L23.1")
         load_LON(w.OutL04)
         w.OutL04['text'] = "ON"
     else:
         print("OutL04: "+p1)
+        w.ser.write("L23.0")
         load_LOFF(w.OutL04)
         w.OutL04['text'] = "OFF"
     sys.stdout.flush()
@@ -374,6 +408,12 @@ def loadSafetyStatus():
 def loadFanState(p1, s):
     p1.fc= s
     p1.configure(text = str(s))
+    
+def initSerialCommunication():
+    w.ser = serial.Serial("/dev/ttyACM0", 9600)     
+    #"/dev/ttyACM0" is the port to which Arduino is connected
+    #You can check port in your terminal by typing ls /dev/tty*
+    #9600 is the baud rate
 
 def init(top, gui, *args, **kwargs):
     global w, top_level, root, checkImage
