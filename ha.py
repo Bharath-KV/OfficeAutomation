@@ -33,6 +33,7 @@ def vp_start_gui():
     ha_support.loadTemperature()
     ha_support.loadPeopleCount(0)
     ha_support.loadSafetyStatus()
+    ha_support.initSerialCommunication()
     root.mainloop()
 
 w = None
